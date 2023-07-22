@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
 
+app.use(express.static("build"));
 app.use(cors());
 
 app.use(
@@ -79,8 +80,8 @@ app.post("/api/persons", (req, res) => {
       error: "Contact needs a name and a number",
     });
 
-  if (contacts.find((c) => c.name === body.name))
-    return res.status(400).json({ error: "That contact already exists" });
+  // if (contacts.find((c) => c.name === body.name))
+  //   return res.status(400).json({ error: "That contact already exists" });
 
   const newContact = {
     id: generateId(),

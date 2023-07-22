@@ -4,7 +4,11 @@
   "description": "backend for the full stack helsinki part 3",
   "main": "index.js",
   "scripts": {
+    "build:ui": "rm -rf build && cd ../full-stack-helsinki/part2/phonebook && npm run build && cp -r build ../../../phonebook-backend",
+    "deploy": "fly deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
@@ -16,6 +20,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.3.3",
     "nodemon": "^3.0.1"
   }
 }
