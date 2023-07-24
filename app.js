@@ -8,15 +8,10 @@ const logger = require("./utils/logger");
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", false);
-logger.info("connecting to", config.MONGODB_URI);
-
-mongoose.set("strictQuery", false);
-const url = process.env.MONGODB_URI;
-
-console.log("connecting to url", url);
+logger.info("connecting to");
 
 mongoose
-  .connect(url)
+  .connect(config.MONGODB_URI)
   .then(() => {
     console.log("Connected to db successfully");
   })
